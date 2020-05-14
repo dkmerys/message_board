@@ -18,21 +18,26 @@ class Board
     @@total_rows = 0
   end
   
-  def ==(board_to_compare)
-    self.topic() == board_to_compare.topic()
-  end
-
-  def update(new_topic)
-    @topic = new_topic
-  end
-
-  def delete
-    @@boards.delete(self.id)
-  end
-
-
   def save
     @@boards[self.id] = Board.new({:topic => self.topic, :id => self.id})
   end
+
+  def self.find(id)
+    @@boards[id]
+  end
+
+  
+  def update(new_topic)
+    @topic = new_topic
+  end
+  
+  def delete
+    @@boards.delete(self.id)
+  end
+  
+  def ==(board_to_compare)
+    self.topic() == board_to_compare.topic()
+  end
+  
 
 end

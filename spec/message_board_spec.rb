@@ -63,4 +63,13 @@ describe '#Board' do
     end
   end
 
+  describe('.find') do
+    it("finds a board by id") do
+      board = Board.new({:topic => "music", :id => nil})
+      board.save
+      board2 = Board.new({:topic => "politics", :id => nil})
+      board2.save
+      expect(Board.find(board.id)).to(eq(board))
+    end
+  end
 end
