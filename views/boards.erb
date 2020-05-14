@@ -1,11 +1,11 @@
 <h1>Board to Death</h1>
 
-<h3>Available Message Boards</h3>
+<h3>Available Message boards</h3>
 
 <% if @boards.any? %>
   <ul>
     <% @boards.each do |board| %>
-      <li><%= board.topic %></li>
+      <li><a href="/boards/<%= board.id %>"><%= board.topic %></a></li>
     <% end %>
   </ul>
 <% else %>

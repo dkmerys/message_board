@@ -4,6 +4,11 @@ require('./lib/message_board')
 require('pry')
 also_reload('lib/**/*.rb')
 
+get('/') do
+  @boards = Board.all
+  erb(:boards)
+end
+
 get('/boards') do
   @boards = Board.all
   erb(:boards)
@@ -26,14 +31,26 @@ get('/boards/search') do
   erb(:search_result)
 end
 
-get('/board/:id') do
+get('/boards/:id') do
   @board = Board.find(params[:id].to_i())
   erb(:board)
 end
 
-patch('boards/:id') do
+get('/board/:id/edit') do
+  @board = Board.find(params[:id].to_i)
+  erb(:board_edit)
+end
+
+patch('/boards/:id') do
   @board = Board.find(params[:id].to_i())
   @board.update(params[:topic])
   @boards = Board.all
-  redirect('/boards')
+  erb(:boards)
+end
+
+delete('/boards/:id') do
+  @board = Board.find(params[:id].to_i())
+  @board.delete()
+  @boards = Board.all()
+  erb(:boards)
 end
