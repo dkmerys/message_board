@@ -72,4 +72,14 @@ describe '#Board' do
       expect(Board.find(board.id)).to(eq(board))
     end
   end
+
+  describe('.search') do
+    it("allows user to search for a board") do
+      board = Board.new({:topic => "music", :id => nil})
+      board.save
+      board2 = Board.new({:topic => "politics", :id => nil})
+      board2.save
+      expect(Board.search(board.topic)).to(eq([board]))
+    end
+  end
 end

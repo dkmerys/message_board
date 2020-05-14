@@ -26,7 +26,6 @@ class Board
     @@boards[id]
   end
 
-  
   def update(new_topic)
     @topic = new_topic
   end
@@ -37,6 +36,11 @@ class Board
   
   def ==(board_to_compare)
     self.topic() == board_to_compare.topic()
+  end
+
+  def self.search(search_topic)
+    array = @@boards.values.select {|board| board.topic == search_topic}
+    return array
   end
   
 
