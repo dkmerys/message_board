@@ -52,4 +52,15 @@ describe '#Board' do
     end
   end
 
+  describe('#delete') do
+    it("deletes a board") do
+      board = Board.new({:topic => "music", :id => nil})
+      board.save
+      board2 = Board.new({:topic => "politics", :id => nil})
+      board2.save
+      board.delete()
+      expect(Board.all).to(eq([board2]))
+    end
+  end
+
 end
