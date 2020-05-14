@@ -26,6 +26,10 @@ class Board
     @topic = new_topic
   end
 
+  def delete
+    @@boards.delete(self.id)
+  end
+
 
   def save
     @@boards[self.id] = Board.new({:topic => self.topic, :id => self.id})
