@@ -1,0 +1,23 @@
+<h1>Board to Death</h1>
+
+<h3>Available Message Boards</h3>
+
+<% if @boards.any? %>
+  <ul>
+    <% @boards.each do |board| %>
+      <li><%= board.topic %></li>
+    <% end %>
+  </ul>
+<% else %>
+    <p>There are no current topics to discuss</p>
+<% end %>
+
+<a href="/boards/new">Add a new board</a>
+
+<form action="/boards/search" method="get">
+  <div>
+    <label for="user_search">Search for a topic</label>
+    <input id="search" name="user_search" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn">Search</button>
+</form>

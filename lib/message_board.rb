@@ -1,5 +1,4 @@
 class Board
-  attr_reader :topic, :id
   attr_accessor :topic, :id
   @@boards = {}
   @@total_rows = 0

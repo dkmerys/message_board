@@ -1,0 +1,13 @@
+<h1>Search results:</h1>
+
+<% if @search_results.any? %>
+  <% @search_results.each do |result| %>
+  <ul>
+    <li><%= result.topic %></li>
+  </ul>
+  <% end %>
+<% else %>
+  <p> No results met your criteria </p>
+<% end %>
+
+<a href="/">Back to topic list</a>
