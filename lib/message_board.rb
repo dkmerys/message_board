@@ -22,6 +22,10 @@ class Board
     self.topic() == board_to_compare.topic()
   end
 
+  def update(new_topic)
+    @topic = new_topic
+  end
+
 
   def save
     @@boards[self.id] = Board.new({:topic => self.topic, :id => self.id})
